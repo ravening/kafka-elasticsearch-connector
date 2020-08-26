@@ -46,7 +46,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: mvn spring-boot:build-image
+        working-directory: ./
+        run: ./mvnw spring-boot:build-image
 
       - name: Tag the image
         run: docker image tag $IMAGE_NAME ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME
